@@ -6,7 +6,7 @@ export function MovieList({ movies }) {
       {movies.map(movie => {
         return (
           <li key={movie.id}>
-            <Link to=""> {movie.title}</Link>
+            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
           </li>
         );
       })}

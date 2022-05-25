@@ -1,15 +1,12 @@
-import { Outlet } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
-import { GetMoviesAPI } from 'components/API';
-import { MovieList } from 'components/List/MovieList';
+import * as API from 'components/API/API';
+import { MovieList } from 'components/views/List/MovieList';
 import { Form, Input, SearchBtn } from './styled';
-
-const API = new GetMoviesAPI();
 
 export function MoviesPage() {
   const [query, setQuery] = useState('');
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -19,11 +16,16 @@ export function MoviesPage() {
 
   useEffect(() => {
     if (query === '') {
-      setMovies(prevState => []);
+      setMovies(prevState => null);
       return;
     }
 
     API.getMovieByQuery(query).then(response => {
+      if (response.total_results === 0) {
+        setMovies(prevState => null);
+        return;
+      }
+      
       setMovies(prevState => [...response.results]);
     });
   }, [query]);
@@ -38,8 +40,6 @@ export function MoviesPage() {
       </Form>
 
       {movies && <MovieList movies={movies} />}
-
-      <Outlet />
     </>
   );
 }

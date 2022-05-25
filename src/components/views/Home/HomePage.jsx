@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { GetMoviesAPI } from 'components/API';
-import { MovieList } from 'components/List/MovieList';
+import * as API from 'components/API/API';
+import { MovieList } from 'components/views/List/MovieList';
 import { HomeTitle } from './styled';
-
-const API = new GetMoviesAPI();
 
 export function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -17,6 +15,7 @@ export function HomePage() {
   return (
     <>
       <HomeTitle>Trending today</HomeTitle>
+
       {movies && <MovieList movies={movies} />}
     </>
   );
