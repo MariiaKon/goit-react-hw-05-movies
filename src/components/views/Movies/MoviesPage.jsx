@@ -1,8 +1,9 @@
 import { BsSearch } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
 import * as API from 'components/API/API';
-import { MovieList } from 'components/views/List/MovieList';
-import { Form, Input, SearchBtn } from './styled';
+import { MovieList } from 'components/CommonComponents/List/MovieList';
+import { Form, Input } from './styled';
+import { Button } from 'components/CommonComponents/Button/Button.styled';
 
 export function MoviesPage() {
   const [query, setQuery] = useState('');
@@ -25,7 +26,7 @@ export function MoviesPage() {
         setMovies(prevState => null);
         return;
       }
-      
+
       setMovies(prevState => [...response.results]);
     });
   }, [query]);
@@ -34,9 +35,9 @@ export function MoviesPage() {
     <>
       <Form onSubmit={handleSubmit}>
         <Input type="text" name="query" placeholder="Search movie" />
-        <SearchBtn type="submit">
+        <Button type="submit" className="search">
           <BsSearch />
-        </SearchBtn>
+        </Button>
       </Form>
 
       {movies && <MovieList movies={movies} />}

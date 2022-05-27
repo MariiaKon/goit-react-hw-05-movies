@@ -12,7 +12,7 @@ export function Reviews({ id }) {
     API.getMovieReviews(movieId).then(response => {
       setReviews(prevState => [...response.results]);
     });
-  });
+  }, [movieId]);
 
   return (
     <>

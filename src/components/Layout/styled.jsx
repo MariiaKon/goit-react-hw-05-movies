@@ -8,6 +8,11 @@ export const Navigation = styled.nav`
   grid-column-gap: 20px;
   padding: 20px;
   box-shadow: 0px 1px 7px #8a8a8a;
+  font-size: 1.1em;
+
+  @media screen and (min-width: 800px) {
+    padding: 20px 100px;
+  }
 `;
 
 export const Link = styled(NavLink)`
@@ -22,4 +27,8 @@ export const Link = styled(NavLink)`
 
 export const Main = styled.main`
   padding: 20px;
+
+  @media screen and (min-width: 800px) {
+    padding: 20px 100px;
+  }
 `;

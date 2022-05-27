@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as API from 'components/API/API';
-import { MovieList } from 'components/views/List/MovieList';
+import { MovieList } from 'components/CommonComponents/List/MovieList';
 import { HomeTitle } from './styled';
 
 export function HomePage() {

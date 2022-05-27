@@ -14,23 +14,6 @@ export const Msg = styled.div`
   text-transform: uppercase;
 `;
 
-export const GoHomeBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 60px;
-  width: fit-content;
-  border: none;
-  background: black;
-  color: white;
-  font-size: 0.9em;
-  padding: 20px;
-
-  &:hover {
-    background: #f51911;
-  }
-`;
-
 export const GoHomeLink = styled(Link)`
   color: white;
   text-decoration: none;

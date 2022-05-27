@@ -1,4 +1,5 @@
-import { Msg, GoHomeBtn, GoHomeLink } from './styled';
+import { Msg, GoHomeLink } from './styled';
+import { ButtonComponent } from 'components/CommonComponents/Button/Button';
 
 export function NoResults() {
   return (
@@ -7,9 +8,9 @@ export function NoResults() {
       <br />
       <br />
       That page doesn't exist or is unavailable.
-      <GoHomeBtn type="button">
+      <ButtonComponent type="button" className="goBack">
         <GoHomeLink to="/">Go home</GoHomeLink>
-      </GoHomeBtn>
+      </ButtonComponent>
     </Msg>
   );
 }

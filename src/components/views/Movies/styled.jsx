@@ -13,16 +13,9 @@ export const Input = styled.input`
     font-size: 0.8em;
     color: #8a8a8a;
   }
-`;
 
-export const SearchBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 40px;
-  width: 40px;
-  border: none;
-  background: black;
-  color: white;
-  font-size: 1.2em;
+  &:focus {
+    outline-offset: -2px;
+    outline: 2px solid #f51911;
+  }
 `;

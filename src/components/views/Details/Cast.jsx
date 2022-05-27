@@ -11,7 +11,7 @@ export function Cast() {
     API.getMovieCast(movieId).then(response => {
       setCast(prevState => [...response.cast]);
     });
-  });
+  }, [movieId]);
 
   return (
     <>
@@ -19,7 +19,7 @@ export function Cast() {
         <CastList>
           {cast.map(actor => {
             return (
-              <CastItem key={actor.id}>
+              <CastItem key={actor.cast_id}>
                 <ActorPhoto>
                   <img
                     src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
