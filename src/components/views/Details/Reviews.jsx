@@ -1,24 +1,21 @@
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { NoResultsMsg } from './styled';
+import { useReviews } from 'hooks/useReviews';
+import Loading from 'components/CommonComponents/Loader/Loader';
 
-import * as API from 'components/API/API';
-
-export function Reviews({ id }) {
-  const [reviews, setReviews] = useState(null);
+export default function Reviews({ id }) {
   const { movieId } = useParams();
-
-  useEffect(() => {
-    API.getMovieReviews(movieId).then(response => {
-      setReviews(prevState => [...response.results]);
-    });
-  }, [movieId]);
+  const reviews = useReviews(movieId);
 
   return (
     <>
-      {reviews === null || reviews.length === 0 ? (
+      {reviews === null && <Loading />}
+
+      {reviews && reviews.length === 0 && (
         <NoResultsMsg>We don't have any reviews for this movie.</NoResultsMsg>
-      ) : (
+      )}
+
+      {reviews && reviews.length !== 0 && (
         <ul>
           {reviews.map(review => {
             return (

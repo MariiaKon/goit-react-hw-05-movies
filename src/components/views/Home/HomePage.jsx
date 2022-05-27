@@ -1,16 +1,9 @@
-import { useState, useEffect } from 'react';
-import * as API from 'components/API/API';
 import { MovieList } from 'components/CommonComponents/List/MovieList';
 import { HomeTitle } from './styled';
+import { useTrendings } from 'hooks/useTrendings';
 
-export function HomePage() {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    API.getTrending().then(response => {
-      setMovies(prevState => [...response.results]);
-    });
-  }, []);
+export default function HomePage() {
+  const movies = useTrendings();
 
   return (
     <>

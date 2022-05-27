@@ -1,35 +1,19 @@
 import { BsSearch } from 'react-icons/bs';
-import { useState, useEffect } from 'react';
-import * as API from 'components/API/API';
+import { useState } from 'react';
 import { MovieList } from 'components/CommonComponents/List/MovieList';
 import { Form, Input } from './styled';
 import { Button } from 'components/CommonComponents/Button/Button.styled';
+import { useMovieByQuery } from 'hooks/useMovieByQuery';
 
-export function MoviesPage() {
+export default function MoviesPage() {
   const [query, setQuery] = useState('');
-  const [movies, setMovies] = useState(null);
+  const movies = useMovieByQuery(query);
 
   const handleSubmit = e => {
     e.preventDefault();
     setQuery(e.target.elements.query.value);
     e.target.elements.query.value = '';
   };
-
-  useEffect(() => {
-    if (query === '') {
-      setMovies(prevState => null);
-      return;
-    }
-
-    API.getMovieByQuery(query).then(response => {
-      if (response.total_results === 0) {
-        setMovies(prevState => null);
-        return;
-      }
-
-      setMovies(prevState => [...response.results]);
-    });
-  }, [query]);
 
   return (
     <>

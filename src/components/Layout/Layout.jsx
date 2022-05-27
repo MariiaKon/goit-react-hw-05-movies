@@ -2,7 +2,7 @@ import { GlobalNav } from './Navigation';
 import { Main } from './styled';
 import { Outlet } from 'react-router-dom';
 
-export function Layout() {
+export default function Layout() {
   return (
     <>
       <header>

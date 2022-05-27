@@ -1,7 +1,7 @@
 import { Msg, GoHomeLink } from './styled';
 import { ButtonComponent } from 'components/CommonComponents/Button/Button';
 
-export function NoResults() {
+export default function NoResults() {
   return (
     <Msg>
       404 not found

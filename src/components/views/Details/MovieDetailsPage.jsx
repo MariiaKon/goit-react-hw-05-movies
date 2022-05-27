@@ -1,16 +1,10 @@
 import { Outlet, Link, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import * as API from 'components/API/API';
 import { Details, Poster, Desription, MoreInfo } from './styled';
+import { useMovieDetails } from 'hooks/useMovieDetails';
 
-export function MovieDetailsPage() {
+export default function MovieDetailsPage() {
   const { movieId } = useParams();
-
-  const [movie, setMovie] = useState(null);
-
-  useEffect(() => {
-    API.getMovieDetails(movieId).then(setMovie);
-  }, [movieId]);
+  const movie = useMovieDetails(movieId);
 
   return (
     <>
@@ -42,7 +36,7 @@ export function MovieDetailsPage() {
                   <Link to={`cast`}>Cast</Link>
                 </li>
                 <li>
-                  <Link to={`reviews`}>Rewiews</Link>
+                  <Link to={`reviews`}>Reviews</Link>
                 </li>
               </ul>
             </MoreInfo>

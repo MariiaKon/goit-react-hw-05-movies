@@ -1,21 +1,17 @@
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import * as API from 'components/API/API';
 import { CastList, ActorPhoto, CastItem } from './styled';
+import { useCast } from 'hooks/useCast';
+import { Loader } from 'components/CommonComponents/Loader/Loader.styled';
 
-export function Cast() {
-  const [cast, setCast] = useState(null);
+export default function Cast() {
   const { movieId } = useParams();
-
-  useEffect(() => {
-    API.getMovieCast(movieId).then(response => {
-      setCast(prevState => [...response.cast]);
-    });
-  }, [movieId]);
+  const cast = useCast(movieId);
 
   return (
     <>
-      {cast && (
+      {cast === null ? (
+        <Loader />
+      ) : (
         <CastList>
           {cast.map(actor => {
             return (
