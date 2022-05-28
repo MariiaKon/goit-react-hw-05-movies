@@ -8,7 +8,7 @@ export default function NoResults() {
       <br />
       <br />
       That page doesn't exist or is unavailable.
-      <ButtonComponent type="button" className="goBack">
+      <ButtonComponent className="goHome">
         <GoHomeLink to="/">Go home</GoHomeLink>
       </ButtonComponent>
     </Msg>

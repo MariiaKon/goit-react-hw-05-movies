@@ -22,8 +22,15 @@ export const Button = styled.button`
     font-size: 1.2em;
   }
 
-  &.goBack {
+  &.goHome {
     padding: 10px 20px;
     font-size: 0.8em;
+  }
+
+  &.goBack {
+    min-height: 24px;
+    margin-bottom: 20px;
+    font-size: 0.7em;
+    padding: 0 10px;
   }
 `;
