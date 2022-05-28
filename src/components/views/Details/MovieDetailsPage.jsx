@@ -1,10 +1,11 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useParams } from 'react-router-dom';
 import { Details, Poster, Desription, MoreInfo } from './styled';
 import { useMovieDetails } from 'hooks/useMovieDetails';
 import placeholder from 'components/placeholders/no-poster.png';
 
 export default function MovieDetailsPage() {
-  const movie = useMovieDetails();
+  const { movieId } = useParams();
+  const movie = useMovieDetails(movieId);
 
   return (
     <>
