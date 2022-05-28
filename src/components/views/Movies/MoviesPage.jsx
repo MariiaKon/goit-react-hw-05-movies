@@ -11,7 +11,7 @@ export default function MoviesPage() {
   const movies = useMovieByQuery(query);
   const navigate = useNavigate();
   const location = useLocation();
-  const regex = new RegExp(`[a-z]+$`, '');
+  const regex = new RegExp(`[a-z0-9]+$`, '');
   const queryStr = regex.exec(location.search);
 
   const handleSubmit = e => {
