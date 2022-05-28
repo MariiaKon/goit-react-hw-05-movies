@@ -25,7 +25,8 @@ export default function MoviesPage() {
     if (queryStr === null) {
       return;
     }
-    setQuery(prevState => queryStr[0]);
+    
+    setQuery(queryStr[0]);
   }, [queryStr]);
 
   return (

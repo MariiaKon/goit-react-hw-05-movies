@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import * as API from 'components/API/API';
 
-export function useReviews(id) {
+export function useReviews() {
+  const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
 
   useEffect(() => {
-    API.getMovieReviews(id).then(response => {
+    API.getMovieReviews(movieId).then(response => {
       setReviews(prevState => [...response.results]);
     });
-  }, [id]);
+  }, [movieId]);
   return reviews;
 }

@@ -1,11 +1,9 @@
-import { useParams } from 'react-router-dom';
 import { NoResultsMsg } from './styled';
 import { useReviews } from 'hooks/useReviews';
 import Loading from 'components/CommonComponents/Loader/Loader';
 
-export default function Reviews({ id }) {
-  const { movieId } = useParams();
-  const reviews = useReviews(movieId);
+export default function Reviews() {
+  const reviews = useReviews();
 
   return (
     <>

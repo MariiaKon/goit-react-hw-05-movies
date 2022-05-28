@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import * as API from 'components/API/API';
-// import { useLocation } from 'react-router-dom';
 
 export function useMovieByQuery(query) {
   const [movies, setMovies] = useState(null);

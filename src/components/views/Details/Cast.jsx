@@ -1,12 +1,10 @@
-import { useParams } from 'react-router-dom';
 import { CastList, ActorPhoto, CastItem } from './styled';
 import { useCast } from 'hooks/useCast';
 import { Loader } from 'components/CommonComponents/Loader/Loader.styled';
 import placeholder from 'components/placeholders/no-poster.png';
 
 export default function Cast() {
-  const { movieId } = useParams();
-  const cast = useCast(movieId);
+  const cast = useCast();
 
   return (
     <>
