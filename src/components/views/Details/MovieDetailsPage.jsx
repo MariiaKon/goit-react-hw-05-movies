@@ -1,6 +1,7 @@
 import { Outlet, Link, useParams } from 'react-router-dom';
 import { Details, Poster, Desription, MoreInfo } from './styled';
 import { useMovieDetails } from 'hooks/useMovieDetails';
+import placeholder from 'components/placeholders/no-poster.png';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -13,7 +14,11 @@ export default function MovieDetailsPage() {
           <Details>
             <Poster>
               <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+                    : placeholder
+                }
                 alt={movie.title}
               />
             </Poster>

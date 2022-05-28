@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { CastList, ActorPhoto, CastItem } from './styled';
 import { useCast } from 'hooks/useCast';
 import { Loader } from 'components/CommonComponents/Loader/Loader.styled';
+import placeholder from 'components/placeholders/no-poster.png';
 
 export default function Cast() {
   const { movieId } = useParams();
@@ -18,7 +19,11 @@ export default function Cast() {
               <CastItem key={actor.cast_id}>
                 <ActorPhoto>
                   <img
-                    src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                    src={
+                      actor.profile_path
+                        ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
+                        : placeholder
+                    }
                     alt={actor.name}
                   />
                 </ActorPhoto>

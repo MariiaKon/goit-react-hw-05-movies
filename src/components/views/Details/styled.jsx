@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import placeholder from 'components/placeholders/no-poster.png';
 
 export const Details = styled.div`
   display: block;
@@ -20,10 +19,6 @@ export const Poster = styled.div`
   height: 300px;
   width: 200px;
   background-color: #c3c3c3a4;
-  background-image: url(${placeholder});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   margin-bottom: 20px;
 
   @media screen and (min-width: 500px) {
@@ -72,10 +67,6 @@ export const CastItem = styled.li`
 
 export const ActorPhoto = styled.div`
   background-color: #c3c3c3a4;
-  background-image: url(${placeholder});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   width: 150px;
   height: 225px;
   margin: 0 auto 10px auto;
