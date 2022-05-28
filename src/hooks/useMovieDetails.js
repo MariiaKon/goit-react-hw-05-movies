@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom;
 import * as API from 'components/API/API';
 
-export function useMovieDetails() {
-  const { movieId } = useParams();
+export function useMovieDetails(id) {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    API.getMovieDetails(movieId).then(setMovie);
-  }, [movieId]);
+    API.getMovieDetails(id).then(setMovie);
+  }, [id]);
 
   return movie;
 }
