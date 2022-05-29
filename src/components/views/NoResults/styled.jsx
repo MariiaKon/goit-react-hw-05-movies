@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Msg = styled.div`
   height: 100vh;
@@ -12,9 +11,4 @@ export const Msg = styled.div`
   font-weight: 600;
   font-size: 34px;
   text-transform: uppercase;
-`;
-
-export const GoHomeLink = styled(Link)`
-  color: white;
-  text-decoration: none;
 `;
