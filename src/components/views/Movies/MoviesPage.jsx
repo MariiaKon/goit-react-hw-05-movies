@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { MovieList } from 'components/CommonComponents/List/MovieList';
 import { Button } from 'components/CommonComponents/Button/Button.styled';
+import { NoInfoMsgComponent } from 'components/CommonComponents/NoMoviesMsg/NoInfoMsg';
 import { Form, Input } from './styled';
 import { useMovieByQuery } from 'hooks/useMovieByQuery';
 
@@ -16,18 +17,23 @@ export default function MoviesPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setQuery(e.target.elements.query.value);
-    navigate(`?query=${e.target.elements.query.value.toLowerCase()}`);
+    setQuery(e.target.elements.query.value.trim());
+    navigate(`?query=${e.target.elements.query.value.trim().toLowerCase()}`);
     e.target.elements.query.value = '';
   };
 
   useEffect(() => {
+    if (location.search === '') {
+      setQuery('');
+      return;
+    }
+
     if (queryStr === null) {
       return;
     }
-    
+
     setQuery(queryStr[0]);
-  }, [queryStr]);
+  }, [queryStr, location]);
 
   return (
     <>
@@ -37,6 +43,13 @@ export default function MoviesPage() {
           <BsSearch />
         </Button>
       </Form>
+
+      {movies?.length === 0 && (
+        <NoInfoMsgComponent
+          text={"We don't have movies for "}
+          query={`"${query}".`}
+        ></NoInfoMsgComponent>
+      )}
 
       {movies && <MovieList movies={movies} />}
     </>
