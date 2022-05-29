@@ -84,9 +84,3 @@ export const ActorPhoto = styled.div`
     }
   }
 `;
-
-export const NoResultsMsg = styled.div`
-  font-size: 18px;
-  font-weight: 400;
-  padding: 20px 0;
-`;
