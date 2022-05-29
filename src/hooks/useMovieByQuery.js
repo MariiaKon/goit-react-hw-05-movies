@@ -12,7 +12,7 @@ export function useMovieByQuery(query) {
 
     API.getMovieByQuery(query).then(response => {
       if (response.total_results === 0) {
-        setMovies(prevState => null);
+        setMovies(prevState => []);
         return;
       }
 
