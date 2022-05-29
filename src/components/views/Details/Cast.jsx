@@ -1,16 +1,22 @@
 import { CastList, ActorPhoto, CastItem } from './styled';
 import { useCast } from 'hooks/useCast';
-import { Loader } from 'components/CommonComponents/Loader/Loader.styled';
+import Loading from 'components/CommonComponents/Loader/Loader';
+import { NoInfoMsgComponent } from 'components/CommonComponents/NoMoviesMsg/NoInfoMsg';
 import placeholder from 'components/placeholders/no-poster.png';
+import PropTypes from 'prop-types';
 
 export default function Cast() {
   const cast = useCast();
 
   return (
     <>
-      {cast === null ? (
-        <Loader />
-      ) : (
+      {cast === null && <Loading />}
+
+      {cast?.length === 0 && (
+        <NoInfoMsgComponent text={"We don't have information"} />
+      )}
+
+      {cast && (
         <CastList>
           {cast.map(actor => {
             return (
@@ -36,3 +42,14 @@ export default function Cast() {
     </>
   );
 }
+
+Cast.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      cast_id: PropTypes.number.isRequired,
+      profile_path: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+    })
+  ),
+};
