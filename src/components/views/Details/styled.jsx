@@ -73,6 +73,7 @@ export const ActorPhoto = styled.div`
 
   img {
     width: 150px;
+    height: 225px;
   }
 
   @media screen and (min-width: 500px) {
@@ -81,6 +82,7 @@ export const ActorPhoto = styled.div`
 
     img {
       width: 120px;
+      height: 180px;
     }
   }
 `;
