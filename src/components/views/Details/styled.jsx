@@ -29,6 +29,7 @@ export const Poster = styled.div`
 
   img {
     max-height: 300px;
+    max-width: 200px;
   }
 `;
 
